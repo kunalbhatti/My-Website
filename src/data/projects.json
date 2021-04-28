@@ -1,0 +1,12 @@
+{
+  "projects": [{
+    "name": "test project",
+    "description": "this is a test project",
+    "frontend": "angular",
+    "backend": "node",
+    "database": "mongo db",
+    "github": "git hub link",
+    "preview": "preview link",
+    "image": "./../assets/preview.png"
+  }]
+}

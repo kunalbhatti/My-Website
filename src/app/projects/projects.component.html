@@ -1,0 +1,66 @@
+<mat-toolbar color="primary" fxLayoutGap="25px" fxLayoutAlign="start center">
+  <button (click)="sidenav.toggle();" *ngIf="mediaQuery === 'xs' || mediaQuery === 'sm' || mediaQuery === 'md'"
+    mat-icon-button>
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
+  <span style="font-weight: 300; cursor:default;">
+    <span *ngIf="sidenav.opened">My Projects</span>
+    <span *ngIf="!sidenav.opened">{{selectedProject.name}}</span>
+  </span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [ngClass]="{
+      'mat-sidenav-mobile' : mediaQuery === 'xs' || mediaQuery === 'sm',
+      'mat-sidenav-tab' :  mediaQuery === 'md',
+      'mat-sidenav-comp' : mediaQuery !== 'xs' && mediaQuery !== 'sm' && mediaQuery !== 'md'}" opened>
+
+    <mat-card *ngFor="let project of projects" (click)="showProject(project);" class="mat-elevation-z8 pointer">
+      <mat-card-header>
+        <mat-card-title>{{project.name}}</mat-card-title>
+      </mat-card-header>
+
+      <img mat-card-image [src]="project.image" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          {{project.description}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <div style="height: 20px;"></div>
+
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column">
+    <div class="container">
+      <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+    </div>
+    <mat-list style="padding: 20px;">
+      <mat-list-item>
+        <b>Name:</b>{{selectedProject.name}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <b>Front-End:</b> {{selectedProject.frontend}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <b>Back-End:</b> {{selectedProject.backend}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <b>Database:</b> {{selectedProject.database}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <b>GitHub:</b> {{selectedProject.github}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <b>Description:</b> {{selectedProject.description}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

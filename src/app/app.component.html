@@ -1,0 +1,16 @@
+<div style="height: 100vh; overflow: hidden;">
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="mat-elevation-z8">
+      <span style="font-size: 18px; font-weight: 400; margin-right: 15px; cursor:pointer;"
+        [routerLink]="['/', 'about-me']">Kunal Bhatti</span>
+      <button mat-button [routerLink]="['/','projects']">Projects</button>
+      <button mat-button [routerLink]="['/','about-me']">About Me</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div style="height: 100%;">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
